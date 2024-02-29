@@ -1,12 +1,12 @@
 {
   "ramens": [
     {
-        "id": 1,
-        "name": "Shoyu Ramen",
-        "restaurant": "Nonono",
-        "image": "./assets/ramen/shoyu.jpg",
-        "rating": 7,
-        "comment": "Delish. Can't go wrong with a classic!"
+      "id": 1,
+      "name": "Shoyu Ramen",
+      "restaurant": "Nonono",
+      "image": "./assets/ramen/shoyu.jpg",
+      "rating": 7,
+      "comment": "Delish. Can't go wrong with a classic!"
     },
     {
       "id": 2,
@@ -39,6 +39,14 @@
       "image": "./assets/ramen/kojiro.jpg",
       "rating": 6,
       "comment": "Perfect for a cold night."
+    },
+    {
+      "id": "9a99",
+      "name": "Shin Ramen",
+      "restaurant": "Flatiron Ramen",
+      "image": "https://i.namu.wiki/i/hLm_LmLhPrIee2GvnG6RGniNmvFG0EthxLEdetFPIkwkvOUO5J08bkxUCPW6oIdKfX2HgeaYktwz4MOYnbBHbfKQBEivqyEY-L7WTAdQ_ocWnLGRbzUc46z5ZFtPjUlfjX90dLVbQIO-c6pFrhkazQ.webp",
+      "rating": "7",
+      "comment": "Suuuppper Yuuuuummmy~~~~!!"
     }
   ]
 }
