@@ -1,6 +1,8 @@
-// index.js
 
-// Callbacks
+
+// This function receives the information of the clicked ramen 
+// and displays the corresponding details on the screen.
+
 const handleClick = (ramen) => {
   const detailName = document.querySelector("#ramen-detail > .name");
   const detailRestaurant = document.querySelector("#ramen-detail > .restaurant");
@@ -16,8 +18,11 @@ const handleClick = (ramen) => {
   detailsComment.textContent = ramen.comment;
 };
 
+//submitted ramen information to be processed when the form is submitted, 
+//displaying that information on the screen, and enabling the addition, update, and deletion of data.
+
 const handleSubmit = (e) => {
-  e.preventDefault()
+  e.preventDefault() //prevent the default behavior of refreshing the page when an event occurs.
   const name = e.target['new-name'].value;
   const restaurant = e.target.restaurant.value;
   const image = e.target.image.value;
@@ -32,39 +37,48 @@ const handleSubmit = (e) => {
   deleteRamen(newRamen);
 };
 
+//this function sets up an event listener for the submit event on the "new-ramen" form, 
+//ensuring that when the form is submitted, 
+//the handleSubmit function is called to handle the form data.
+
 const addSubmitListener = () => {
-  const ramenForm = document.querySelector("#new-ramen");
+  const ramenForm = document.querySelector("#new-ramen"); //new-ramen id select
   if (ramenForm) {
     ramenForm.addEventListener("submit", handleSubmit);
   };
 };
 
+//receive and display new ramen information
+//handle click event
+
 const displayRamen = (newRamen) => {
-  const ramenMenuDiv = document.getElementById("ramen-menu");
-  const img = document.createElement("img");
+  const ramenMenuDiv = document.getElementById("ramen-menu"); //container for displaying ramen menu
+  const img = document.createElement("img"); //creat new image
   img.src = newRamen.image;
-  img.alt - newRamen.name;
-  img.classList.add("image-slider")
-  img.addEventListener("click", (e) => handleClick(newRamen, e));
-  ramenMenuDiv.appendChild(img);
+  img.alt = newRamen.name;
+  img.classList.add("image-slider") //apply image style -> slider
+  img.addEventListener("click", (e) => handleClick(newRamen, e));//call handleClick function
+  ramenMenuDiv.appendChild(img); //add image to the contatiner
 };
 
+//connect server and display remens
+
 const displayRamens = () => {
-  fetch("http://localhost:3000/ramens")
-  .then((res) => res.json())
-  .then((ramens) => {
-    document.getElementById("ramen-menu").innerHTML = "";
-    ramens.forEach(displayRamen)
+  fetch("http://localhost:3000/ramens") //api
+  .then((res) => res.json()) //response trangit to JSON
+  .then((ramens) => { //receive JSON type list
+    document.getElementById("ramen-menu").innerHTML = ""; //empty ramen-munu id
+    ramens.forEach(displayRamen) //itereate each ramen list and display
   })
-  .catch((error) => console.log(error));
+  .catch((error) => console.log(error)); //if error occur, display
 };
  
 const main = () => {
-  addSubmitListener();
-  displayRamens(); 
+  addSubmitListener(); //handling e when submitting new ramen infor to the server
+  displayRamens(); //displaying the initial list of ramen fetched from the server 
 };
 
-main()
+main() //invoke both function
 
 // //Edit rating
 // let ramen = {
@@ -118,6 +132,7 @@ function addNewRamen(newRamen) {
     })
     .then(res => res.json())
     .then(ramens = console.log(ramens))
+    .catch((error) => console.log(error));
 }
 
 //PATCH
@@ -131,6 +146,7 @@ function updateRamen(newRamen) {
     })
     .then(res => res.json())
     .then(ramens => console.log(ramens))
+    .catch((error) => console.log(error));
 }
 
 //Delete
@@ -143,6 +159,7 @@ function deleteRamen(id) {
   })
   .then(res => res.json())
   .then(ramens => console.log(ramens))
+  .catch((error) => console.log(error));
 }
 
 // Export functions for testing
